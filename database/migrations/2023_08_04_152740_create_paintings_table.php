@@ -14,6 +14,13 @@ return new class extends Migration
         Schema::create('paintings', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('name');
+            $table->text('description');
+            $table->decimal('price', 10, 2);
+            $table->string('image_path');
+            $table->unsignedBigInteger('artist_id');
+            
+            $table->foreign('artist_id')->references('id')->on('artists')->onDelete('cascade');
         });
     }
 
